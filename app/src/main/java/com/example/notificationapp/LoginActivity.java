@@ -57,10 +57,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void login(){
-        String username = editTextEmail.getText().toString().trim();
+        String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        userLogin(username,password);
-        logineditor.putString("text", String.valueOf(username));
+        userLogin(email,password);
+        logineditor.putString("text", String.valueOf(email));
         logineditor.commit();
     }
 

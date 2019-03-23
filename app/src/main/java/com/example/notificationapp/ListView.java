@@ -1,9 +1,6 @@
 package com.example.notificationapp;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -68,13 +65,12 @@ public class ListView extends AppCompatActivity {
         listView.setAdapter(customListView);
     }
 
-    private void collectData()
+    public void collectData()
     {
 //Connection
         try{
 
-            //SharedPreferences prefs = getSharedPreferences("groupinfo", Context.MODE_PRIVATE);
-            //String usergroup=prefs.getString("usergroup","");
+
             URL url=new URL(urladdress+usergroup);
             HttpURLConnection con=(HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
@@ -163,8 +159,8 @@ public class ListView extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    private String usergroup;
-    public String showJSON(String response){
+    public static String usergroup;
+    public static void showJSON(String response){
 
 
 
@@ -176,7 +172,7 @@ public class ListView extends AppCompatActivity {
             usergroup = collegeData.getString(KEY_GROUPVALUE);
 
 
-           // collectData(usergroup);
+
 
             //SharedPreferences prefs = getSharedPreferences("groupinfo", Context.MODE_PRIVATE);
             //SharedPreferences.Editor editor=prefs.edit();
@@ -191,8 +187,9 @@ public class ListView extends AppCompatActivity {
         }
 
         //Toast.makeText(this,usergroup,Toast.LENGTH_LONG).show();
-        return this.usergroup;
-    }
+        //return usergroup;
 
+    }
+//public String xyz=usergroup;
 
 }
