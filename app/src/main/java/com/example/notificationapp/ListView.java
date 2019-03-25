@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,9 +28,9 @@ public class ListView extends AppCompatActivity {
 
     public static final String DATA_URL = "https://usiuflyers.000webhostapp.com/select.php?email=";
     public static final String KEY_GROUPVALUE = "usergroup";
-
+    public String TAG = ListView.class.getSimpleName();
     public static final String JSON_ARRAY = "result";
-    //public static  String usergroup;
+
 
     String urladdress="https://usiuflyers.000webhostapp.com/displayevents.php?usergroup=";
     String[] name;
@@ -42,6 +43,7 @@ public class ListView extends AppCompatActivity {
     String line=null;
     String result=null;
     EditText ETgroup;
+    private String usergroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,29 +51,23 @@ public class ListView extends AppCompatActivity {
         listView=(android.widget.ListView)findViewById(R.id.lview);
         ETgroup=(EditText)findViewById(R.id.ETgroup);
 
-        //String email="user2@usiu.ac.ke";
         String email=getIntent().getStringExtra("email");
 
         Toast.makeText(this,"Welcome "+email,Toast.LENGTH_LONG).show();
-
         getData();
-        //SharedPreferences prefs = getSharedPreferences("groupinfo", Context.MODE_PRIVATE);
-        //String usergroup=prefs.getString("usergroup","");
-        //ETgroup.setText(usergroup);
 
-        StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
-        collectData();
-        CustomListView customListView=new CustomListView(this,name,venue,date,time,imagepath);
-        listView.setAdapter(customListView);
+
+
     }
 
-    public void collectData()
+    private void collectData()
     {
 //Connection
         try{
 
 
             URL url=new URL(urladdress+usergroup);
+            Log.d(TAG, "@RESULT urlString " + url);
             HttpURLConnection con=(HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
             is=new BufferedInputStream(con.getInputStream());
@@ -140,7 +136,7 @@ public class ListView extends AppCompatActivity {
         loading = ProgressDialog.show(this,"Please wait...","Fetching...",false,false);
 
         String url = DATA_URL+email.trim();
-
+        Log.d(TAG, "@URL " + url);
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -157,10 +153,11 @@ public class ListView extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
     }
 
-    public static String usergroup;
-    public static void showJSON(String response){
+
+    public String showJSON(String response){
 
 
 
@@ -170,16 +167,13 @@ public class ListView extends AppCompatActivity {
             JSONArray result = jsonObject.getJSONArray(JSON_ARRAY);
             JSONObject collegeData = result.getJSONObject(0);
             usergroup = collegeData.getString(KEY_GROUPVALUE);
+            Log.d(TAG, "@usergroup " + usergroup);
 
 
-
-
-            //SharedPreferences prefs = getSharedPreferences("groupinfo", Context.MODE_PRIVATE);
-            //SharedPreferences.Editor editor=prefs.edit();
-            //editor.putString("usergroup",usergroup);
-            //editor.apply();
-
-
+            StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
+            collectData();
+            CustomListView customListView=new CustomListView(this,name,venue,date,time,imagepath);
+            listView.setAdapter(customListView);
 
 
         } catch (JSONException e) {
@@ -187,9 +181,9 @@ public class ListView extends AppCompatActivity {
         }
 
         //Toast.makeText(this,usergroup,Toast.LENGTH_LONG).show();
-        //return usergroup;
+        return this.usergroup;
 
     }
-//public String xyz=usergroup;
+
 
 }

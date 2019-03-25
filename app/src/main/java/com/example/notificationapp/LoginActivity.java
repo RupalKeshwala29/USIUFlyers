@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +25,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonLogin,buttonRegister;
     SharedPreferences logindb;
     SharedPreferences.Editor logineditor;
-
+    private String TAG = LoginActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
@@ -77,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
+                Log.d(TAG,"@onPostExecute s "+s);
                 if(s.contains("success")){
                     Intent intent = new Intent(LoginActivity.this,ListView.class);
                     intent.putExtra("email",email);
