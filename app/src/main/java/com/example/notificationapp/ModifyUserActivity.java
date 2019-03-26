@@ -112,15 +112,7 @@ public class ModifyUserActivity extends AppCompatActivity{
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-    @Override
-    public void onBackPressed() {
 
-        Intent intent=new Intent(ModifyUserActivity.this,MainActivity.class);
-        startActivity(intent);
-        //intent.putExtra("username",username);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        finish();
-    }
 
     private void updateuserentries() {
         String name = editTextName.getText().toString().trim();
@@ -195,5 +187,14 @@ public class ModifyUserActivity extends AppCompatActivity{
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intent=new Intent(ModifyUserActivity.this,AdminLandingPage.class);
+        startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        finish();
     }
 }

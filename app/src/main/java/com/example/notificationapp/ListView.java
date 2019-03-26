@@ -1,7 +1,10 @@
 package com.example.notificationapp;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.StrictMode;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -183,6 +186,26 @@ public class ListView extends AppCompatActivity {
         //Toast.makeText(this,usergroup,Toast.LENGTH_LONG).show();
         return this.usergroup;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("You will be Signed out")
+                .setMessage("Are you sure you want to Logout?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                        Intent intent=new Intent(ListView.this,LoginActivity.class);
+
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
+                }).create().show();
     }
 
 

@@ -5,8 +5,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="30dp"
+    android:background="@color/grey"
     tools:context=".ModifyUserActivity">
 
+    <ImageView
+        android:layout_width="150dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"
+        android:layout_height="85dp" />
+
+    <TextView
+        android:text="Modify user"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:textColor="#FFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:textColor="#FFFF"
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email" />
     <EditText
         android:background="@drawable/rounded_edittext"
         android:textColor="#000"
@@ -16,10 +38,6 @@
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:id="@+id/editTextEmail" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
 
 
     <Button
@@ -31,6 +49,12 @@
         android:text="@string/button_remove_user"
         android:id="@+id/buttonRemoveUser" />
 
+    <TextView
+        android:textColor="#FFFF"
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group" />
 
     <EditText
         android:background="@drawable/rounded_edittext"
@@ -42,6 +66,12 @@
         android:layout_height="40dp"
         android:id="@+id/editTextUsergroup"/>
 
+    <TextView
+        android:textColor="#FFFF"
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name" />
 
     <EditText
         android:background="@drawable/rounded_edittext"
@@ -52,6 +82,13 @@
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:id="@+id/editTextName" />
+
+    <TextView
+        android:textColor="#FFFF"
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password" />
 
     <EditText
         android:background="@drawable/rounded_edittext"
@@ -76,7 +113,7 @@
         android:layout_height="30dp"
         android:background="@drawable/rounded_buttons"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/button_modify_user"
         android:id="@+id/buttonModifyUser" />
 
