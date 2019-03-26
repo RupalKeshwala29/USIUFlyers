@@ -17,4 +17,5 @@
     <string name="title_activity_removeuser">Remove User</string>
     <string name="button_add_group">Add Group</string>
     <string name="button_remove_group">Remove Group</string>
+    <string name="fcm_token">FCM Token: %s</string>
 </resources>

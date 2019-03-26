@@ -41,4 +41,10 @@
         android:text="Modify Event"
         android:id="@+id/ModifyEvent"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send notification"
+        android:id="@+id/SendNotification"/>
+
 </LinearLayout>
