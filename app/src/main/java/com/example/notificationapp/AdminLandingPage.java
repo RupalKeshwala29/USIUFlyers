@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class AdminLandingPage extends AppCompatActivity {
-    private Button AddUser,ModifyUser,ModifyEvent,SendNotification;
+    private Button AddUser,ModifyUser,ModifyEvent,SendNotification,EventAttendance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class AdminLandingPage extends AppCompatActivity {
         ModifyUser=(Button) findViewById(R.id.ModifyUser);
         ModifyEvent=(Button) findViewById(R.id.ModifyEvent);
         SendNotification=(Button) findViewById(R.id.SendNotification);
+        EventAttendance=(Button) findViewById(R.id.EventAttendance);
 
 
         AddUser.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +55,15 @@ public class AdminLandingPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),NotificationWebView.class);
+                startActivity(intent);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            }
+        });
+
+        EventAttendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),EventAttendance.class);
                 startActivity(intent);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             }
