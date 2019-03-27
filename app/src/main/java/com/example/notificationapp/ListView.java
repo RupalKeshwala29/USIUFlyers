@@ -8,7 +8,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -33,6 +36,7 @@ public class ListView extends AppCompatActivity {
     public static final String KEY_GROUPVALUE = "usergroup";
     public String TAG = ListView.class.getSimpleName();
     public static final String JSON_ARRAY = "result";
+
 
 
     String urladdress="https://usiuflyers.000webhostapp.com/displayevents.php?usergroup=";
@@ -179,6 +183,25 @@ public class ListView extends AppCompatActivity {
             listView.setAdapter(customListView);
 
 
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    TextView tvw1=(TextView) view.findViewById(R.id.tvname);
+                    TextView tvw2=(TextView) view.findViewById(R.id.tvvenue);
+                    String email=getIntent().getStringExtra("email").trim();
+                    String eventName = tvw1.getText().toString();
+                    String eventVenue = tvw2.getText().toString();
+
+
+                    Intent intent = new Intent(getApplicationContext(), Attendance.class);
+                    intent.putExtra("eventName", eventName );
+                    intent.putExtra("eventVenue", eventVenue );
+                    intent.putExtra("email", email );
+                    startActivity(intent);
+
+                }
+            });
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -207,6 +230,8 @@ public class ListView extends AppCompatActivity {
                     }
                 }).create().show();
     }
+
+
 
 
 }
