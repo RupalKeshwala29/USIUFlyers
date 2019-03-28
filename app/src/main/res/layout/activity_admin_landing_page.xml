@@ -50,17 +50,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_buttons"
-        android:text="Modify Group"
-        android:id="@+id/ModifyGroup"
-        />
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_buttons"
-        android:text="Modify Event"
+        android:text="Create / Modify Event"
         android:id="@+id/ModifyEvent"/>
 
     <Button

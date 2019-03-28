@@ -1,6 +1,7 @@
 package com.example.notificationapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,8 @@ public class AddUserActivity extends AppCompatActivity {
     EditText editTextName, editTextEmail, editTextPassword, editTextUsergroup;
     //Spinner spinnerPickGroup;
     Button buttonRegister, buttonLogin;
+    String emailPattern = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$";
+    //String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+\\.+[a-z]";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +38,23 @@ public class AddUserActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String email = editTextEmail.getText().toString().trim();
+                if (email.matches(emailPattern))
+                {
                 addUser();
+                }else {
+
+                    Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(AddUserActivity.this,LoginActivity.class);
+
+                startActivity(intent);
 
             }
         });

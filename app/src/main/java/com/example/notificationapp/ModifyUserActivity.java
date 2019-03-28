@@ -22,6 +22,7 @@ public class ModifyUserActivity extends AppCompatActivity{
     private EditText editTextEmail, editTextUsergroup, editTextName, editTextPassword;
     private Button buttonRemoveUser, buttonModifyUser;
     private Spinner PickGroup;
+    String emailPattern = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +37,31 @@ public class ModifyUserActivity extends AppCompatActivity{
         buttonRemoveUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmDeleteEntry();
+
+                String email = editTextEmail.getText().toString().trim();
+                if (email.matches(emailPattern))
+                {
+                    confirmDeleteEntry();
+                }else {
+
+                    Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         buttonModifyUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmUpdateEntry();
+                String email = editTextEmail.getText().toString().trim();
+                if (email.matches(emailPattern))
+                {
+                    confirmUpdateEntry();
+                }else {
+
+                    Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
     }

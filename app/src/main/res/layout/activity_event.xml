@@ -86,6 +86,8 @@
         android:background="@drawable/rounded_edittext"
         android:textColor="#000"
         android:hint="Time of Event"
+        android:clickable="true"
+        android:focusable="false"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_width="fill_parent"
@@ -101,6 +103,8 @@
 
     <EditText
         android:background="@drawable/rounded_edittext"
+        android:clickable="true"
+        android:focusable="false"
         android:textColor="#000"
         android:hint="Enter Date"
         android:textSize="20sp"
