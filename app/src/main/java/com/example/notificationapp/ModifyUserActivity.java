@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class ModifyUserActivity extends AppCompatActivity{
 
    private static final String URL_DELETE = "https://usiuflyers.000webhostapp.com/deleteuser.php?email=";
-    private static final String UPDATE_USER_URL = "https://usiuflyers.000webhostapp.com/update.php";
+    private static final String UPDATE_USER_URL = "https://usiuflyers.000webhostapp.com/updateuser.php";
     private EditText editTextEmail, editTextUsergroup, editTextName, editTextPassword;
     private Button buttonRemoveUser, buttonModifyUser;
     private Spinner PickGroup;
